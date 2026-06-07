@@ -6,7 +6,7 @@ export default function Header() {
             <p className="text-left">Following</p>
 
             <h1 className={`${quantico.className} text-center font-bold italic text-6xl`}>
-                The Scoreline
+                The Armchair Umpire
             </h1>
 
             <p className="text-right">Profile</p>

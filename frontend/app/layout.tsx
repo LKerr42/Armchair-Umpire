@@ -5,7 +5,7 @@ import Header from "./components/header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "The Scoreline - Home",
+    title: "Armchair Umpire - Home",
     description: "Sports statistics web app",
 };
 
