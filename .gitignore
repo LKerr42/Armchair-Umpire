@@ -1,6 +1,7 @@
 #node.js junk
 frontend/node_modules/
 backend/node_modules/
+node_modules/
 frontend/.next/
 
 #.env

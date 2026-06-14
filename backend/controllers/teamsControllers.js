@@ -14,7 +14,11 @@ async function getTeamById(req, res) {
 
     try {
         const result = await pool.query(
-            "SELECT * FROM teams WHERE id = $1",
+            `SELECT teams.id, teams.short_name, leagues.name
+            FROM teams
+            INNER JOIN leagues
+            ON teams.league_id = leagues.id
+            WHERE teams.id = $1;`,
             [id]
         );
 

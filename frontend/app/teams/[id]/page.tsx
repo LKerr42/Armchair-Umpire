@@ -24,8 +24,8 @@ export default function TeamPage({ params }: Props) {
 
     return (
         <div className="bg-mauve-900 p-5">
-            <h1>{team.name}</h1>
-            <p>League: {team.league_id}</p>
+            <h1>{team.shortname}</h1>
+            <p>League: {team.league}</p>
         </div>
     );
 }
