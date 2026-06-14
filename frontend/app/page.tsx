@@ -31,10 +31,9 @@ export default function Home() {
                 Recommended For You
             </h2>
 
-            {/* <p>{team.league_id}</p> */}
             {teams.map((team: any) => (
                 <div key={team.id}>
-                    <p>{team.short_name}</p>
+                    <p>{team.short_name}: {team.name}</p>
                 </div>
             ))}
             </div>
