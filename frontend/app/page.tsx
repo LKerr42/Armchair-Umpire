@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { quantico } from "./components/fonts"; 
+import { quantico } from "@/public/assets/fonts"; 
 import Link from "next/link";
 import Image from "next/image";
 

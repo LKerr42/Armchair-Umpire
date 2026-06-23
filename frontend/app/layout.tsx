@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { outfit } from "./components/fonts";
+import { outfit } from "@/public/assets/fonts"; 
 import Navbar from "./components/navbar";
 import Header from "./components/header";
 import "./globals.css";

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, use } from "react";
+import { quantico } from "@/public/assets/fonts"; 
 
 type Props = {
     params: Promise<{
@@ -28,8 +29,26 @@ export default function TeamPage({ params }: Props) {
 
     return (
         <div className="bg-mauve-900 p-5">
-            <h1>{team.short_name}</h1>
-            <p>League: {team.name}</p>
+            <div className="bg-gray-700 w-full rounded-lg p-6 shadow-md flex items-center">
+                <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-30" />
+                <h1 className="font-bold text-4xl ps-5">{team.short_name}</h1>
+            </div>
+
+            <div className="w-4/5 mt-5 flex gap-6">
+                <div className="bg-gray-600 w-2/3 rounded-lg p-6 shadow-md">
+                    <p className="text-lg text-white text-bold">Matches</p>
+                    <p className="text-base text-white">Latest</p>
+                </div>
+
+                <div className="bg-gray-600 w-1/2 rounded-lg p-6 shadow-md">
+                    <p className="text-lg text-white text-bold">Table</p>
+                    <p className="text-base text-white">{team.name}</p>
+                </div>
+            </div>
+
+            <div className="bg-gray-600 w-4/5 mt-5 rounded-lg p-6 shadow-md">
+                <h1 className="text-lg text-white text-bold">About</h1>
+            </div>
         </div>
     );
 }

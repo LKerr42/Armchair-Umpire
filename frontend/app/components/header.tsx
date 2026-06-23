@@ -1,4 +1,4 @@
-import { quantico } from "./fonts"; 
+import { quantico } from "@/public/assets/fonts"; 
             
 export default function Header() {
     return (
