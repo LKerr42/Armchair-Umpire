@@ -5,7 +5,7 @@ import Header from "./components/header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Armchair Umpire - Home",
+    title: "Armchair Umpire",
     description: "Sports statistics web app",
 };
 

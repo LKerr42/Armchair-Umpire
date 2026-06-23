@@ -15,21 +15,17 @@ export default function TeamPage({ params }: Props) {
     const url = "http://localhost:5000/api/teams/" + id;
 
     useEffect(() => {
-        async function loadTeam() {
-            const response = await fetch(url);
-            const data = await response.json();
-            setTeam(data);
-        }
-
-        loadTeam();
-    }, []);
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setTeam(data));
+    }, [id]);
 
     if (!team) return <p>Loading...</p>;
 
     return (
         <div className="bg-mauve-900 p-5">
-            <h1>{team.short_name}</h1>
-            <p>League: {team.name}</p>
+            <h1>{team.shortname}</h1>
+            <p>League: {team.league}</p>
         </div>
     );
 }
