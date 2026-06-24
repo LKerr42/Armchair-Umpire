@@ -1,24 +1,22 @@
 const pool = require("../db");
 
-async function getAllTeams(req, res) {
+async function getAllLeagues(req, res) {
     try {
-        const result = await pool.query("SELECT * FROM teams");
+        const result = await pool.query("SELECT * FROM leagues");
         res.json(result.rows);
     } catch (err) {
         res.status(500).json({ error: "Failed to fetch teams" });
     }
 }
 
-async function getTeamById(req, res) {
+async function getLeagueById(req, res) {
     const id = req.params.id;
 
     try {
         const result = await pool.query(
-            `SELECT teams.t_id, teams.t_short_name, leagues.league_name, leagues.l_id
-            FROM teams
-            INNER JOIN leagues
-            ON teams.league_id = leagues.l_id
-            WHERE teams.t_id = $1;`,
+            `SELECT leagues.league_name
+            FROM leagues
+            WHERE leagues.l_id = $1;`,
             [id]
         );
 
@@ -29,6 +27,6 @@ async function getTeamById(req, res) {
 }
 
 module.exports = {
-    getAllTeams,
-    getTeamById
+    getAllLeagues,
+    getLeagueById
 };

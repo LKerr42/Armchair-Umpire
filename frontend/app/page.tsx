@@ -35,10 +35,10 @@ export default function Home() {
 
             <div className="flex flex-wrap gap-6 pt-5">
                 {teams.map((team: any) => (
-                    <Link href={`/teams/${team.id}`} key={team.id} className="bg-gray-700 w-50 rounded-lg p-6 shadow-md text-center">
+                    <Link href={`/teams/${team.t_id}`} key={team.t_id} className="bg-gray-700 w-50 rounded-lg p-6 shadow-md text-center">
                         {/* <Image src="/assets/placeholder.png" alt="Placeholder crest" width={40} height={40} className="w-40" /> */}
                         <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-40" />
-                        <p className="pt-3">{team.short_name}</p>
+                        <p className="pt-3">{team.t_short_name}</p>
                     </Link>
                 ))}
             </div>
