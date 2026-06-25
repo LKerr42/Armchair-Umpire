@@ -28,13 +28,13 @@ export default function TeamPage({ params }: Props) {
 
     if (!team) return <p>Loading...</p>;
 
-    //console.log(team);
+    console.log(team);
 
     return (
         <div className="bg-mauve-900 p-5">
             <div className="bg-gray-700 w-full rounded-lg p-6 shadow-md flex items-center">
                 <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-30" />
-                <h1 className="font-bold text-4xl ps-5">{team.t_short_name}</h1>
+                <h1 className="font-bold text-4xl ps-5">{team.t_name_alt}</h1>
             </div>
 
             <div className="w-4/5 mt-5 flex gap-6">
@@ -45,7 +45,7 @@ export default function TeamPage({ params }: Props) {
 
                 <Link href={`/leagues/${team.l_id}`} key={team.l_id} className="bg-gray-600 w-1/2 rounded-lg p-6 shadow-md">
                     <p className="text-lg text-white text-bold">Table</p>
-                    <p className="text-base text-white">{team.league_name}</p>
+                    <p className="text-base text-white">{team.l_name}</p>
                 </Link>
             </div>
 
