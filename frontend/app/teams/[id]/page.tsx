@@ -51,6 +51,7 @@ export default function TeamPage({ params }: Props) {
 
             <div className="bg-gray-600 w-4/5 mt-5 rounded-lg p-6 shadow-md">
                 <h1 className="text-lg text-white text-bold">About</h1>
+                <p className="text-base text-white">{team.t_description}</p>
             </div>
         </div>
     );

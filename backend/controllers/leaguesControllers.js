@@ -14,7 +14,7 @@ async function getLeagueById(req, res) {
 
     try {
         const result = await pool.query(
-            `SELECT l.l_name, l.l_curr_season
+            `SELECT l.l_name, l.l_curr_season, l.l_description
             FROM leagues l
             WHERE l.l_id = $1;`,
             [id]
