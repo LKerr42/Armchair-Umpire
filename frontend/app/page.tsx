@@ -38,7 +38,7 @@ export default function Home() {
                     <Link href={`/teams/${team.t_id}`} key={team.t_id} className="bg-gray-700 w-50 rounded-lg p-6 shadow-md text-center">
                         {/* <Image src="/assets/placeholder.png" alt="Placeholder crest" width={40} height={40} className="w-40" /> */}
                         <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-40" />
-                        <p className="pt-3">{team.t_name_alt}</p>
+                        <p className="pt-3">{team.t_name}</p>
                     </Link>
                 ))}
             </div>

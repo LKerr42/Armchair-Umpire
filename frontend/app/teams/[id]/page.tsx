@@ -34,7 +34,7 @@ export default function TeamPage({ params }: Props) {
         <div className="bg-mauve-900 p-5">
             <div className="bg-gray-700 w-full rounded-lg p-6 shadow-md flex items-center">
                 <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-30" />
-                <h1 className="font-bold text-4xl ps-5">{team.t_name_alt}</h1>
+                <h1 className="font-bold text-4xl ps-5">{team.t_name}</h1>
             </div>
 
             <div className="w-4/5 mt-5 flex gap-6">
