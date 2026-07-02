@@ -154,7 +154,7 @@ async function importLeague(leagueJson) {
         const teamRes = await pool.query(query, values);
         return teamRes.rows[0].l_id;
     } catch (err) {
-        throw err;
+        console.error(error);
         return null;
     }
 }

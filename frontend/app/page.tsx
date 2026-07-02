@@ -16,26 +16,26 @@ export default function Home() {
 
     return (
     <main>
-        <div className="bg-mauve-900 p-5">
+        <div className="bg-slate-950 p-5">
             <h2 className={`${quantico.className} text-left font-bold underline text-4xl`}>
                 Latest Scores
             </h2>
         </div>
 
-        <div className="bg-mauve-900 p-5">
+        <div className="bg-slate-950 p-5">
             <h2 className={`${quantico.className} text-left font-bold underline text-4xl`}>
                 Trending News
             </h2>
         </div>
 
-        <div className="bg-mauve-900 p-5">
+        <div className="bg-slate-950 p-5">
             <h2 className={`${quantico.className} text-left font-bold underline text-4xl`}>
                 Recommended For You
             </h2>
 
             <div className="flex flex-wrap gap-6 pt-5">
                 {teams.map((team: any) => (
-                    <Link href={`/teams/${team.t_id}`} key={team.t_id} className="bg-gray-700 w-50 rounded-lg p-6 shadow-md text-center">
+                    <Link href={`/teams/${team.t_id}`} key={team.t_id} className="bg-gray-900 w-50 rounded-lg p-6 shadow-md text-center hover:bg-gray-800 transition-colors">
                         {/* <Image src="/assets/placeholder.png" alt="Placeholder crest" width={40} height={40} className="w-40" /> */}
                         <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-40" />
                         <p className="pt-3">{team.t_name}</p>
