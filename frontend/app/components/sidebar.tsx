@@ -13,7 +13,7 @@ export default function Sidebar({
         <div className="fixed top-0 left-0 h-screen w-80 bg-slate-800 text-white">
             <button
                 onClick={onClose}
-                className="p-4"
+                className="p-4 hover:text-sky-400 cursor-pointer transition-colors"
             >
                 Close
             </button>

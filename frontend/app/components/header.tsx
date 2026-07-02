@@ -11,7 +11,7 @@ export default function Header({
         <div className="grid grid-cols-3 items-center w-full p-8 bg-slate-900">
             <button
                 onClick={onOpenSidebar}
-                className="text-left hover:text-sky-400"
+                className="text-left w-fit hover:text-sky-400 cursor-pointer transition-colors"
             >
                 Following
             </button>
