@@ -38,20 +38,30 @@ export default function TeamPage({ params }: Props) {
             </div>
 
             <div className="w-4/5 mt-5 flex gap-6">
-                <div className="bg-gray-900 w-2/3 rounded-lg p-6 shadow-md">
-                    <p className="text-lg text-white text-bold">Matches</p>
-                    <p className="text-base text-white">Latest</p>
+                <div className="w-1/3">
+                    <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md">
+                        <p className="text-lg text-white font-bold">Info</p>
+                    </div>
                 </div>
+                
+                <div className="w-2/3">
+                    <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md">
+                        <p className="text-lg text-white font-bold">Matches</p>
+                        <p className="text-base text-white">Latest</p>
+                    </div>
 
-                <Link href={`/leagues/${team.l_id}`} key={team.l_id} className="bg-gray-900 w-1/2 rounded-lg p-6 shadow-md hover:bg-gray-800 transition-colors">
-                    <p className="text-lg text-white text-bold">Table</p>
-                    <p className="text-base text-white">{team.l_name}</p>
-                </Link>
-            </div>
+                    <Link href={`/leagues/${team.l_id}`} key={team.l_id} 
+                            className="block bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md hover:bg-gray-800 transition-colors"
+                            >
+                        <p className="text-lg text-white font-bold">Table</p>
+                        <p className="text-base text-white">{team.l_name}</p>
+                    </Link>
 
-            <div className="bg-gray-900 w-4/5 mt-5 rounded-lg p-6 shadow-md">
-                <h1 className="text-lg text-white text-bold">About</h1>
-                <p className="text-base text-white">{team.t_description}</p>
+                    <div className="bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md">
+                        <h1 className="text-lg text-white font-bold">About</h1>
+                        <p className="text-base text-white">{team.t_description}</p>
+                    </div>
+                </div>
             </div>
         </div>
     );

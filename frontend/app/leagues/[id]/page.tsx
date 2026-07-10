@@ -35,21 +35,53 @@ export default function LeaguePage({ params }: Props) {
             </div>
 
             <div className="w-4/5 mt-5 flex gap-6">
-                <div className="bg-gray-900 w-2/3 rounded-lg p-6 shadow-md">
-                    <p className="text-lg text-white text-bold">Matches</p>
-                    <p className="text-base text-white">Latest</p>
+                <div className="w-1/3">
+                    <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md">
+                        <p className="text-lg text-white font-bold">Info</p>
+                    </div>
                 </div>
+                
+                <div className="w-2/3">
+                    <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md">
+                        <p className="text-lg text-white font-bold">Matches</p>
+                        <p className="text-base text-white">Latest</p>
+                    </div>
 
-                <div className="bg-gray-900 w-1/2 rounded-lg p-6 shadow-md">
-                    <p className="text-lg text-white text-bold">Table</p>
-                    <p className="text-base text-white">{league.l_curr_season} Season</p>
+                    <div className="bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md">
+                        <p className="text-lg text-white font-bold">Table</p>
+                        <p className="text-base text-white">{league.l_curr_season} Season</p>
+                    </div>
+
+                    <div className="bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md">
+                        <h1 className="text-lg text-white font-bold">About</h1>
+                        <p className="text-base text-white">{league.l_description}</p>
+                    </div>
                 </div>
-            </div>
-
-            <div className="bg-gray-900 w-4/5 mt-5 rounded-lg p-6 shadow-md">
-                <h1 className="text-lg text-white text-bold">About</h1>
-                <p className="text-base text-white">{league.l_description}</p>
             </div>
         </div>
+
+        // <div className="bg-slate-950 p-5">
+        //     <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md flex items-center">
+        //         <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-30" />
+        //         <h1 className="font-bold text-4xl ps-5">{league.l_name}</h1>
+        //     </div>
+
+        //     <div className="w-4/5 mt-5 flex gap-6">
+        //         <div className="bg-gray-900 w-2/3 rounded-lg p-6 shadow-md">
+        //             <p className="text-lg text-white font-bold">Matches</p>
+        //             <p className="text-base text-white">Latest</p>
+        //         </div>
+
+        //         <div className="bg-gray-900 w-1/2 rounded-lg p-6 shadow-md">
+        //             <p className="text-lg text-white font-bold">Table</p>
+        //             <p className="text-base text-white">{league.l_curr_season} Season</p>
+        //         </div>
+        //     </div>
+
+        //     <div className="bg-gray-900 w-4/5 mt-5 rounded-lg p-6 shadow-md">
+        //         <h1 className="text-lg text-white font-bold">About</h1>
+        //         <p className="text-base text-white">{league.l_description}</p>
+        //     </div>
+        // </div>
     );
 }
