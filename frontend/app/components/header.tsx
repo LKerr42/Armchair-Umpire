@@ -1,4 +1,5 @@
 import { quantico } from "@/public/assets/fonts"; 
+import Link from "next/link";
 
 type HeaderProps = {
     onOpenSidebar: () => void;
@@ -16,9 +17,9 @@ export default function Header({
                 Following
             </button>
  
-            <h1 className={`${quantico.className} text-center font-bold italic text-6xl`}>
+            <Link href="/" className={`${quantico.className} text-center font-bold italic text-6xl`}>
                 The Armchair Umpire
-            </h1>
+            </Link>
 
             <p className="text-right">Profile</p>
         </div>
