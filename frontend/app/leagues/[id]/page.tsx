@@ -65,7 +65,7 @@ export default function LeaguePage({ params }: Props) {
                     <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md mt-5">
                         <p className="text-lg text-white font-bold">Socials</p>
 
-                        <SocialLink href={league.l_website} label="Website" />
+                        <SocialLink href={league.l_website} label="Website" />  
 
                         <SocialLink href={league.l_twitter} label="Twitter" />
 

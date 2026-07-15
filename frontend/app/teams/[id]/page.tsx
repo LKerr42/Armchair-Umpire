@@ -72,9 +72,20 @@ export default function TeamPage({ params }: Props) {
                         <div className="mt-5 w-full border-2 border-solid border-cyan-900 rounded-lg p-4">
                             <p className="text-lg text-white">Colours</p>
                             <div className="flex mt-1">
-                                <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_1 }}></div>
-                                <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_2 }}></div>
-                                <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_3 }}></div>
+
+                            {team.t_colour_3
+                                ? 
+                                <>
+                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_1 }}></div>
+                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_2 }}></div>
+                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_3 }}></div>
+                                </>
+                                :
+                                <>
+                                    <div className="w-1/2 h-5" style={{ backgroundColor: team.t_colour_1 }}></div>
+                                    <div className="w-1/2 h-5" style={{ backgroundColor: team.t_colour_2 }}></div>
+                                </>
+                            }
                             </div>
                         </div>
                     </div>
