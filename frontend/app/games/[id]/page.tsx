@@ -2,7 +2,7 @@
 
 import { useEffect, useState, use } from "react";
 import { quantico } from "@/public/assets/fonts"; 
-import SocialLink from "@/app/components/socialLink";
+import EmbeddedVideo from "@/app/components/embeddedVideo";
 import Link from "next/link";
 
 type Props = {
@@ -55,11 +55,12 @@ export default function GamePage({ params }: Props) {
             <div className="w-4/5 mt-5 flex gap-6">
                 <div className="w-1/3">
                     <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md">
-                        <p className="text-lg text-white font-bold">Questions</p>
+                        <p className="text-lg text-white font-bold">Stats</p>
 
                         <div className="mt-5 w-full border-2 border-solid border-cyan-900 rounded-lg p-4">
-                            <p className="text-lg text-white">Game?</p>
-                            <p className="text-lg text-sky-200">Was a game</p>
+                            <p className="text-lg text-white">Venue</p>
+                            <Link href={`https://en.wikipedia.org/wiki/${game.game.g_venue}`} target="_blank" rel="noopener noreferrer"
+                                className="text-lg text-sky-600 hover:text-sky-400 cursor-pointer transition-colors">{game.game.g_venue}</Link>
                         </div>
                     </div>
                         
@@ -67,7 +68,7 @@ export default function GamePage({ params }: Props) {
                 
                 <div className="w-2/3">
                     <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md">
-                        <p className="text-lg text-sky-200">
+                        <p className="text-lg">
                             <Link href={`/leagues/${game.league.l_id}`} 
                             className="text-sky-600 hover:text-sky-400 cursor-pointer transition-colors"
                             >{game.league.l_name} </Link>
@@ -75,31 +76,34 @@ export default function GamePage({ params }: Props) {
                         </p>
 
                         <div className="flex justify-center p-5">
-                            <div className="flex flex-col items-center text-center w-40 p-5">
-                                <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-9/10 mb-4" />
+                            <div className="flex flex-col items-center text-center w-full p-5">
+                                <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-30 mb-4" />
                                 <p>{game.homeTeam.t_name}</p>
                             </div>
                             
                             <div className="flex justify-center items-center w-60">
-                                <p className="w-20 text-center text-6xl" style={{ color: homeCol }}>
-                                    {game.game.g_home_score} 
-                                </p> 
+                                <div className="w-20 text-center text-6xl" style={{ color: homeCol }}>
+                                    <p>{game.game.g_home_score}</p>
+                                </div> 
 
-                                <p className="w-20 text-center text-5xl text-gray-500 mx-7">
-                                     - 
-                                </p>
+                                <div className="w-20 text-center text-5xl text-gray-500 mx-7">
+                                    <p className="pt-12">-</p>
+                                    <p className="pt-5 text-xl">{game.game.g_status}</p>
+                                </div>
                                 
-                                <p className="w-20 text-center text-6xl" style={{ color: awayCol }}>
-                                    {game.game.g_away_score} 
-                                </p>  
+                                <div className="w-20 text-center text-6xl" style={{ color: awayCol }}>
+                                    <p>{game.game.g_away_score}</p>
+                                </div>  
                             </div>
                             
-                            
-                            <div className="flex flex-col items-center text-center w-40 p-5">
-                                <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-9/10 mb-4" />
+                            <div className="flex flex-col items-center text-center w-full p-5">
+                                <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-30 mb-4" />
                                 <p>{game.awayTeam.t_name}</p>
                             </div>
                         </div>
+
+                        <EmbeddedVideo href={game.game.g_video} />
+
                     </div>
                 </div>
             </div>
