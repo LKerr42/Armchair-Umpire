@@ -26,7 +26,7 @@ export default function EmbeddedVideo({
     return (
         <Link href={href} target="_blank" rel="noopener noreferrer" 
                 className="relative block group w-50 hover:cursor-pointer"
-            >
+        >
             <img src={getYoutubeThumbnail(href)} alt="Highlights" className="rounded-lg"></img>
             <div className="absolute inset-0 bg-black/30 rounded-lg group-hover:bg-black/40 transition"></div>
             
@@ -35,7 +35,7 @@ export default function EmbeddedVideo({
             </p>
         
             <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-white text-5xl shadow-md group-hover:text-neutral-300 transition-colors">▶</p>
+                <p className="text-white text-5xl shadow-md">▶</p>
             </div>
         </Link>
     );

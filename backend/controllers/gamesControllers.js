@@ -42,7 +42,7 @@ async function getGameById(req, res) {
     const id = req.params.id;
 
     try {
-         getGame(req, res, id);
+        getGame(req, res, id);
     } catch (err) {
         res.status(500).json({ error: "Failed to fetch game: " + err.message});
     }

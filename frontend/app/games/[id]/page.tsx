@@ -2,7 +2,8 @@
 
 import { useEffect, useState, use } from "react";
 import { quantico } from "@/public/assets/fonts"; 
-import EmbeddedVideo from "@/app/components/embeddedVideo";
+import EmbeddedVideo from "@/app/components/games/embeddedVideo";
+import Statistics from "@/app/components/games/statistics";
 import Link from "next/link";
 
 type Props = {
@@ -26,6 +27,14 @@ export default function GamePage({ params }: Props) {
 
         loadGame();
     }, []);
+
+    //setup state for lineups/stats
+    const [selectedTab, setSelectedTab] = useState("lineups");
+
+    const tabs = [  
+        "Lineups",
+        "Stats"
+    ]
 
     if (!game) return <p>Loading...</p>;
 
@@ -55,7 +64,7 @@ export default function GamePage({ params }: Props) {
             <div className="w-4/5 mt-5 flex gap-6">
                 <div className="w-1/3">
                     <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md">
-                        <p className="text-lg text-white font-bold">Stats</p>
+                        {/* <p className="text-lg text-white font-bold">Stats</p> */}
 
                         <div className="mt-5 w-full border-2 border-solid border-cyan-900 rounded-lg p-4">
                             <p className="text-lg text-white">Venue</p>
@@ -81,7 +90,7 @@ export default function GamePage({ params }: Props) {
                                 <p>{game.homeTeam.t_name}</p>
                             </div>
                             
-                            <div className="flex justify-center items-center w-60">
+                            <div className={`${quantico.className} flex justify-center items-center w-60`}>
                                 <div className="w-20 text-center text-6xl" style={{ color: homeCol }}>
                                     <p>{game.game.g_home_score}</p>
                                 </div> 
@@ -104,6 +113,32 @@ export default function GamePage({ params }: Props) {
 
                         <EmbeddedVideo href={game.game.g_video} />
 
+                    </div>
+
+                    <div className="bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md">
+                        <div className="flex border-b border-slate-700">
+                            {tabs.map((tab) => (
+                                <button
+                                    key={tab}
+                                    onClick={() => setSelectedTab(tab)}
+                                    className={
+                                        selectedTab === tab
+                                            ? "px-4 py-2 bg-slate-800 border-b border-slate-400 cursor-pointer"
+                                            : "px-4 py-2 hover:bg-slate-600 transition cursor-pointer"
+                                    }
+                                >
+                                    {tab}
+                                </button>
+                            ))}
+                        </div>
+
+                        {selectedTab === "Stats" && (
+                            <Statistics game={game.game} homeTeam={game.homeTeam} awayTeam={game.awayTeam} />
+                        )}
+
+                        {selectedTab === "Lineups" && (
+                            <p className="text-lg text-white text-center font-bold mt-3">Lineups</p>
+                        )}
                     </div>
                 </div>
             </div>
