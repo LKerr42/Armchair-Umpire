@@ -43,6 +43,7 @@ async function getAllGames(req, res) {
                 g.g_away_score, 
                 g.g_away_score_extra, 
                 g.g_round,
+                g.g_start_time,
 
                 home.t_name AS home_t_name,
                 away.t_name AS away_t_name,
