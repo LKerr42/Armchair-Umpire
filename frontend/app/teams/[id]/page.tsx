@@ -2,6 +2,7 @@
 
 import { useEffect, useState, use } from "react";
 import { quantico } from "@/public/assets/fonts"; 
+import { GamePanelMedium, GamePanelTiny } from "@/app/components/games/gamePanels";
 import SocialLink from "@/app/components/socialLink";
 import Link from "next/link";
 
@@ -35,7 +36,7 @@ export default function TeamPage({ params }: Props) {
         <div className="bg-slate-950 p-5">
             <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md flex items-center">
                 <img src="/assets/placeholder.png" alt="Placeholder crest" className="w-30" />
-                <h1 className="font-bold text-4xl ps-5">{team.t_name}</h1>
+                <h1 className="font-bold text-4xl ps-5">{team.team.t_name}</h1>
             </div>
 
             <div className="w-4/5 mt-5 flex gap-6">
@@ -45,14 +46,14 @@ export default function TeamPage({ params }: Props) {
 
                         <div className="mt-5 w-full border-2 border-solid border-cyan-900 rounded-lg p-4">
                             <p className="text-lg text-white">Home</p>
-                            <Link href={`https:/en.wikipedia.org/wiki/${team.t_city}`} target="_blank" rel="noopener noreferrer"
-                                className="text-lg text-sky-600 hover:text-sky-400 cursor-pointer transition-colors">{team.t_city}, {team.t_country}</Link>
+                            <Link href={`https:/en.wikipedia.org/wiki/${team.team.t_city}`} target="_blank" rel="noopener noreferrer"
+                                className="text-lg text-sky-600 hover:text-sky-400 cursor-pointer transition-colors">{team.team.t_city}, {team.team.t_country}</Link>
                         </div>
 
                         <div className="mt-5 w-full border-2 border-solid border-cyan-900 rounded-lg p-4">
                             <p className="text-lg text-white">Stadium</p>
-                            <Link href={`https://en.wikipedia.org/wiki/${team.t_stadium}`} target="_blank" rel="noopener noreferrer"
-                                className="text-lg text-sky-600 hover:text-sky-400 cursor-pointer transition-colors">{team.t_stadium}</Link>
+                            <Link href={`https://en.wikipedia.org/wiki/${team.team.t_stadium}`} target="_blank" rel="noopener noreferrer"
+                                className="text-lg text-sky-600 hover:text-sky-400 cursor-pointer transition-colors">{team.team.t_stadium}</Link>
                         </div>
                     </div>
 
@@ -61,29 +62,29 @@ export default function TeamPage({ params }: Props) {
 
                         <div className="mt-5 w-full border-2 border-solid border-cyan-900 rounded-lg p-4">
                             <p className="text-lg text-white">Year formed</p>
-                            <p className="text-lg text-sky-200">{team.t_year_formed}</p>
+                            <p className="text-lg text-sky-200">{team.team.t_year_formed}</p>
                         </div>
 
                         <div className="mt-5 w-full border-2 border-solid border-cyan-900 rounded-lg p-4">
                             <p className="text-lg text-white">Gender</p>
-                            <p className="text-lg text-sky-200">{team.t_gender}</p>
+                            <p className="text-lg text-sky-200">{team.team.t_gender}</p>
                         </div>
 
                         <div className="mt-5 w-full border-2 border-solid border-cyan-900 rounded-lg p-4">
                             <p className="text-lg text-white">Colours</p>
                             <div className="flex mt-1">
 
-                            {team.t_colour_3
+                            {team.team.t_colour_3
                                 ? 
                                 <>
-                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_1 }}></div>
-                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_2 }}></div>
-                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.t_colour_3 }}></div>
+                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.team.t_colour_1 }}></div>
+                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.team.t_colour_2 }}></div>
+                                    <div className="w-1/3 h-5" style={{ backgroundColor: team.team.t_colour_3 }}></div>
                                 </>
                                 :
                                 <>
-                                    <div className="w-1/2 h-5" style={{ backgroundColor: team.t_colour_1 }}></div>
-                                    <div className="w-1/2 h-5" style={{ backgroundColor: team.t_colour_2 }}></div>
+                                    <div className="w-1/2 h-5" style={{ backgroundColor: team.team.t_colour_1 }}></div>
+                                    <div className="w-1/2 h-5" style={{ backgroundColor: team.team.t_colour_2 }}></div>
                                 </>
                             }
                             </div>
@@ -93,15 +94,15 @@ export default function TeamPage({ params }: Props) {
                     <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md mt-5">
                         <p className="text-lg text-white font-bold">Socials</p>
                         
-                        <SocialLink href={team.t_website} label="Website" />
+                        <SocialLink href={team.team.t_website} label="Website" />
 
-                        <SocialLink href={team.t_twitter} label="Twitter" />
+                        <SocialLink href={team.team.t_twitter} label="Twitter" />
 
-                        <SocialLink href={team.t_youtube} label="Youtube" />
+                        <SocialLink href={team.team.t_youtube} label="Youtube" />
 
-                        <SocialLink href={team.t_instagram} label="Instagram" />
+                        <SocialLink href={team.team.t_instagram} label="Instagram" />
 
-                        <SocialLink href={team.t_facebook} label="Facebook" />
+                        <SocialLink href={team.team.t_facebook} label="Facebook" />
                     </div>
                 </div>
                 
@@ -109,18 +110,28 @@ export default function TeamPage({ params }: Props) {
                     <div className="bg-gray-900 w-full rounded-lg p-6 shadow-md">
                         <p className="text-lg text-white font-bold">Matches</p>
                         <p className="text-base text-white">Latest</p>
+
+                        <GamePanelMedium game={team.recentGames[0]} />
+                    
+                        <div className="flex flex-wrap justify-between gap-4 pt-5">
+                            {team.recentGames
+                                .slice(1)
+                                .map((game: any) => (
+                                <GamePanelTiny key={game.g_id} game={game} />
+                            ))}
+                        </div>
                     </div>
 
-                    <Link href={`/leagues/${team.l_id}`} key={team.l_id} 
+                    <Link href={`/leagues/${team.team.l_id}`} key={team.team.l_id} 
                             className="block bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md hover:bg-gray-800 transition-colors"
                             >
                         <p className="text-lg text-white font-bold">Table</p>
-                        <p className="text-base text-white">{team.l_name}</p>
+                        <p className="text-base text-white">{team.team.l_name}</p>
                     </Link>
 
                     <div className="bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md">
                         <h1 className="text-lg text-white font-bold">About</h1>
-                        <p className="text-base text-white">{team.t_description}</p>
+                        <p className="text-base text-white">{team.team.t_description}</p>
                     </div>
                 </div>
             </div>
