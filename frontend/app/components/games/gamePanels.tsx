@@ -99,7 +99,7 @@ export function GamePanelSmall({
 }: gameProps) {
     const {homeCol, awayCol} = getScoreColours(game);
     return (
-        <Link href={`/games/${game.g_id}`} className="bg-gray-800 w-65 h-35 rounded-lg px-4 pb-2 shadow-md text-left hover:bg-gray-700 transition-colors">
+        <Link href={`/games/${game.g_id}`} className="flex flex-col justify-between bg-gray-800 w-65 h-35 rounded-lg px-4 pb-2 shadow-md text-left hover:bg-gray-700 transition-colors">
             <p className="text-sm pt-2">{game.l_name} - {calculateRound(game.g_round)}</p> 
             
             <div className="flex items-center h-7 pt-2"> 

@@ -32,6 +32,7 @@ export default function GamePage({ params }: Props) {
     const [selectedTab, setSelectedTab] = useState("Stats");
 
     const tabs = [  
+        "Timeline",
         "Lineups",
         "Stats"
     ]
@@ -75,6 +76,10 @@ export default function GamePage({ params }: Props) {
                                 </button>
                             ))}
                         </div>
+
+                        {selectedTab === "Timeline" && (
+                            <p className="text-lg text-white text-center font-bold mt-3">Timeline</p>
+                        )}
 
                         {selectedTab === "Stats" && (
                             <Statistics game={game.game} homeTeam={game.homeTeam} awayTeam={game.awayTeam} />
