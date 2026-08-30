@@ -3,6 +3,7 @@
 import { useEffect, useState, use } from "react";
 import { quantico } from "@/public/assets/fonts"; 
 import { GamePanelMedium, GamePanelTiny } from "@/app/components/games/gamePanels";
+import Table from "@/app/components/table";
 import SocialLink from "@/app/components/socialLink";
 import Link from "next/link";
 
@@ -122,14 +123,15 @@ export default function TeamPage({ params }: Props) {
                         </div>
                     </div>
 
-                    <Link href={`/leagues/${team.team.l_id}`} key={team.team.l_id} 
-                            className="block bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md hover:bg-gray-800 transition-colors"
+                    <div 
+                        className="block bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md"
                             >
                         <p className="text-lg text-white font-bold">Table</p>
-                        <p className="text-base text-white">{team.team.l_name}</p>
+                        <Link href={`/leagues/${team.team.l_id}`} key={team.team.l_id}
+                                className="text-lg text-sky-500 hover:text-sky-300 cursor-pointer transition-colors">{team.team.l_name} &gt;</Link>
 
-                        
-                    </Link>
+                        <Table tableElements={team.table}/>
+                    </div>
 
                     <div className="bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md">
                         <h1 className="text-lg text-white font-bold">About</h1>

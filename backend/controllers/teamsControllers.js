@@ -82,6 +82,7 @@ async function getTeamById(req, res) {
                 ls.ls_goals_against,
                 (ls.ls_goals_for - ls.ls_goals_against) AS ls_goals_difference,
                 ls.ls_points,
+                t.t_id,
                 t.t_name
             FROM league_standings ls
             JOIN teams t
