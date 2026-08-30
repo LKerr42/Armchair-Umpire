@@ -42,7 +42,9 @@ async function getTeamById(req, res) {
                 home.t_name AS home_t_name,
                 away.t_name AS away_t_name,
 
-                l.l_name AS l_name
+                l.l_id,
+                l.l_name AS l_name,
+                l.l_curr_season
 
             FROM games g
 
@@ -62,12 +64,40 @@ async function getTeamById(req, res) {
             LIMIT 4;`,
             [id]
         );
+
         const team = teamResult.rows[0];
         const recentGames = [gamesResult.rows[0], gamesResult.rows[1], gamesResult.rows[2], gamesResult.rows[3]];
 
+        const tableResult = await pool.query(
+            `SELECT 
+                ls.ls_id,
+                ls.ls_league_id,
+                ls.ls_team_id,
+                ls.ls_season,
+                ls.ls_played,
+                ls.ls_won,
+                ls.ls_drawn,
+                ls.ls_lost,
+                ls.ls_goals_for,
+                ls.ls_goals_against,
+                (ls.ls_goals_for - ls.ls_goals_against) AS ls_goals_difference,
+                ls.ls_points,
+                t.t_name
+            FROM league_standings ls
+            JOIN teams t
+                ON ls.ls_team_id = t.t_id
+            WHERE ls.ls_season = $1
+                AND ls.ls_league_id = $2
+            ORDER BY ls.ls_points DESC, ls_goals_difference DESC;`,
+            [gamesResult.rows[0].l_curr_season, gamesResult.rows[0].l_id]
+        );
+        
+        const table = tableResult.rows; 
+
         res.json({
             team,
-            recentGames
+            recentGames,
+            table
         });
     } catch (err) {
         res.status(500).json({ error: "Failed to fetch team: " + err.message });

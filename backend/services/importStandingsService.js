@@ -49,7 +49,7 @@ async function calculateStanding(teamID) {
         goalsAgainst += scoreOpp;
     });
 
-    const finalData = {
+    return {
         team_id: teamID,
         league_id: 6,
         season: "2025-2026",
@@ -61,12 +61,9 @@ async function calculateStanding(teamID) {
         teamGoalsAgainst: goalsAgainst,
         teamPoints: points        
     };
-
-    setStandingRecord(finalData);
 }
 
 async function setStandingRecord(teamData) {
-
     const query = `
         INSERT INTO league_standings (ls_league_id, ls_team_id, ls_season,
                                     ls_played, ls_won, ls_drawn, ls_lost,
@@ -101,7 +98,15 @@ async function setStandingRecord(teamData) {
 }
 
 async function main() {
-    calculateStanding(17);
+    const res = await pool.query("SELECT * FROM team_leagues WHERE league_id = $1", [6]);
+    const teams = res.rows;
+
+    for (const team of teams) {
+        const teamData = await calculateStanding(team.team_id);
+        await setStandingRecord(teamData);
+    }
+    
+    console.log("All teams added succsessfully!");
 }
 
 main().catch(console.error);

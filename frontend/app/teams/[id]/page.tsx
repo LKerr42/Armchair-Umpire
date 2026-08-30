@@ -127,6 +127,8 @@ export default function TeamPage({ params }: Props) {
                             >
                         <p className="text-lg text-white font-bold">Table</p>
                         <p className="text-base text-white">{team.team.l_name}</p>
+
+                        
                     </Link>
 
                     <div className="bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md">
