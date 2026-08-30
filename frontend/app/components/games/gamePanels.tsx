@@ -144,15 +144,21 @@ export function GamePanelMedium({
                 </div>
             </div>
 
-            <Link 
-                    href={game.g_video} target="_blank" rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    onMouseEnter={() => setVideoHovered(true)}
-                    onMouseLeave={() => setVideoHovered(false)}
-                    className="block group border-2 border-solid border-sky-600 rounded-3xl w-fit h-fit hover:bg-gray-700 cursor-pointer transition-colors"
-                >
-                <p className="w-fit m-2 text-sky-600 group-hover:text-sky-400 cursor-pointer transition-colors">▶ Match Highlights</p>
-            </Link>
+            {game.g_video ?  
+                <Link 
+                        href={game.g_video} target="_blank" rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        onMouseEnter={() => setVideoHovered(true)}
+                        onMouseLeave={() => setVideoHovered(false)}
+                        className="block group border-2 bg-gray-800 border-solid border-sky-600 rounded-3xl w-fit h-fit hover:bg-gray-700 cursor-pointer transition-colors"
+                    >
+                    <p className="w-fit m-2 mx-4 text-sky-600 group-hover:text-sky-400 cursor-pointer transition-colors">▶ Match Highlights</p>
+                </Link>
+                         :
+                <div>
+                    <p>No highlights found :(</p>
+                </div>
+            }
 
         </div>
     );
