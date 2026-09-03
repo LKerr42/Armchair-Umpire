@@ -130,7 +130,7 @@ export default function TeamPage({ params }: Props) {
                         <Link href={`/leagues/${team.team.l_id}`} key={team.team.l_id}
                                 className="text-lg text-sky-500 hover:text-sky-300 cursor-pointer transition-colors">{team.team.l_name} &gt;</Link>
 
-                        <Table tableElements={team.table}/>
+                        <Table tableElements={team.table} teamID={team.team.t_id} />
                     </div>
 
                     <div className="bg-gray-900 w-full mt-5 rounded-lg p-6 shadow-md">
